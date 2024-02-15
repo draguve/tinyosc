@@ -21,6 +21,8 @@
 #if _WIN32
 #include <winsock2.h>
 #define tosc_strncpy(_dst, _src, _len) strncpy_s(_dst, _len, _src, _TRUNCATE)
+#elif defined(PICO_BOARD)
+#include "lwip/inet.h"
 #else
 #include <netinet/in.h>
 #define tosc_strncpy(_dst, _src, _len) strncpy(_dst, _src, _len)
